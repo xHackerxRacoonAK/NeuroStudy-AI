@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { QuizQuestion } from '../types';
 
@@ -9,7 +10,7 @@ export const generateSummary = async (text: string, language: 'en' | 'si' = 'en'
   
   const model = "gemini-3-flash-preview";
   const langInstruction = language === 'si' 
-    ? "IMPORTANT: You MUST write the entire summary in Sinhala (සිංහල) script. Do not use English." 
+    ? "IMPORTANT: You MUST write the entire summary in Sinhala (සිංහල) script only. Do not use English words unless they are technical terms." 
     : "Write the summary in clear, professional English.";
   
   const prompt = `Provide a concise, high-quality summary (5-7 sentences) of the following text. 
@@ -34,7 +35,7 @@ export const generateQuiz = async (text: string, language: 'en' | 'si' = 'en'): 
 
   const model = "gemini-3-flash-preview";
   const langInstruction = language === 'si' 
-    ? "IMPORTANT: The 'question', 'options', and 'correctAnswer' values MUST be in Sinhala (සිංහල) script. The JSON structure remains the same." 
+    ? "IMPORTANT: The 'question', 'options', and 'correctAnswer' values MUST be written in Sinhala (සිංහල) script. Ensure the JSON structure is preserved exactly." 
     : "The quiz content must be in English.";
   
   const prompt = `Generate a quiz based on the text provided. 
